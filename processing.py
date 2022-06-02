@@ -124,20 +124,4 @@ print(len(test_db))
 print(f"Successfully converted {success_count} annotations to binary for test_db")
 test_db.to_disk("./test.spacy")
 
-# create a new entity recognizer and add it to the pipeline
-ner = nlp.create_pipe('ner')
-nlp.add_pipe('ner')
-
-# add the label 'COUNTRY' to the entity recognizer
-ner.add_label('COUNTRY')
-
-# add the label 'STATE' to the entity recognizer
-ner.add_label('STATE')
-
-# add the label 'ORG' to the entity recognizer
-ner.add_label('ORG')
-
-#train the model
-train("./base_config.cfg", overrides={"paths.train": "./train.spacy", "paths.dev": "./valid.spacy"})
-
 
